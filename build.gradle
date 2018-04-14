@@ -1,0 +1,18 @@
+plugins {
+    id 'base'
+}
+
+version = '1.0'
+description = 'A trivial Gradle build'
+
+task copy(type: Copy, group: 'Custom', description: 'Copies sources to the dest directory') {
+    from "src"
+    into "$buildDir"
+}
+
+task zip(type: Zip, group: 'Archive', description: 'Archives a zip file') {
+    from 'src'
+}
+
+assemble.dependsOn copy
+assemble.dependsOn zip
